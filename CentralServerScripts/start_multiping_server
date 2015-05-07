@@ -1,0 +1,6 @@
+#!/bin/bash
+
+TCP_PORT=55555
+IP_ADDRESS_LIST_FILE=ip_address_list
+
+(socat TCP-LISTEN:$TCP_PORT,fork,reuseaddr EXEC:"./multiping $IP_ADDRESS_LIST_FILE" &)

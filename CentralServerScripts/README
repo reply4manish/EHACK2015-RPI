@@ -1,0 +1,29 @@
+MULTIPING SERVER
+================
+
+This TCP server tries to ping(8) all IP addresses listed in a file, and reports the result.
+
+IP address file format: <ip_address><new_line>...
+E.g.:
+1.2.3.4
+5.6.7.8
+...
+
+Response format: <date>;(Pass|Fail);<ip_address><new_line>...
+E.g.:
+Fri Apr 17 16:08:09 CEST 2015;Pass;1.2.3.4
+Fri Apr 17 16:08:09 CEST 2015;Fail;5.6.7.8
+...
+The IP address response order is the same as in the IP address list file.
+If you don't like the order, the change the file.i
+(Or e.g. read the IP addresses from the TCP port instead, if you want to change them on the fly.)
+
+Filesin this directory:
+README                  # This file
+ip_address_list         # List of IP addresses to ping
+kill_multiping_server   # Script to kill the server
+multiping               # Pinging script used by the server
+start_multiping_server  # Script to start the server (Shall be started from this directory.)
+
+Configuration:
+The TCP port number used is defined by "TCP_PORT=..." in the start and kill scripts.

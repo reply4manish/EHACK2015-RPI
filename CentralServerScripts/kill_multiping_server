@@ -1,0 +1,12 @@
+#!/bin/bash
+
+TCP_PORT=55555
+
+pid=`netstat -anp 2>/dev/null | grep "^tcp.................0.0.0.0:${TCP_PORT} "  | sed 's/  */ /g' | cut -d ' ' -f7 | sed 's/\/.*//'`
+if [ x$pid == x'' ]
+then
+ echo 'Server not running'
+else
+ echo "Killing process $pid"
+ kill $pid
+fi
